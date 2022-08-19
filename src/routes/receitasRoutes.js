@@ -8,6 +8,7 @@ router
     .get('/receitas/:id', receitasController.listarReceitaPorId)
     .post('/receitas', receitasController.cadastrarReceita)
     .put('/receitas/:id',receitasController.atualizarReceita)
+    .delete('/receitas/:id',receitasController.excluirReceita)
 
 
 export default router;

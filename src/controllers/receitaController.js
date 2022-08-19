@@ -74,6 +74,17 @@ class receitaController {
         })
     }
 
+    static excluirReceita(req, res) {
+        const id = req.params.id;
+
+        receitas.findByIdAndDelete(id, (error) => {
+            if (!error) {
+                res.status(200).send({ message: "livro removido com sucesso!" });
+            } else {
+                res.status(500).send({ message: error.message })
+            }
+        })
+    }
 }
 
 export default receitaController;
