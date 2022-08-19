@@ -55,6 +55,23 @@ class receitaController {
         }
     }
 
+    static atualizarReceita(req, res) {
+        const id = req.params.id;
+        const { descricao, valor, data } = req.body;
+
+        if (!descricao || !valor || !data) {
+            res.status(422).json({ message: "Campos vazios!" });
+            return;
+        };
+
+        receitas.findByIdAndUpdate(id, { $set: req.body }, (error) => {
+            if (!error || !receitaAtualizada) {
+                res.status(200).send({ message: "Receita atualizada com sucesso!" })
+            } else {
+                res.status(500).send({ message: "Erro interno!", error: error.message });
+            }
+        })
+    }
 }
 
 export default receitaController;
