@@ -23,6 +23,7 @@ class receitaController {
 
     }
 
+
     static async listarTodasReceitas(req, res) {
         try {
             await receitas.find()
