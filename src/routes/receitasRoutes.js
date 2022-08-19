@@ -5,6 +5,7 @@ const router = express.Router();
 
 router
     .get('/receitas', receitasController.listarTodasReceitas)
+    .get('/receitas/:id', receitasController.listarReceitaPorId)
     .post('/receitas', receitasController.cadastrarReceita)
 
 
