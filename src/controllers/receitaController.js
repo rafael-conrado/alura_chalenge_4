@@ -2,7 +2,7 @@ import receitas from '../models/Receita.js';
 
 class receitaController {
 
-    static async cadastrarReceita(req, res) {
+    static cadastrarReceita(req, res) {
         let receita = new receitas(req.body);
 
         const { descricao, valor, data } = req.body;
@@ -24,18 +24,37 @@ class receitaController {
     }
 
 
-    static async listarTodasReceitas(req, res) {
+    static listarTodasReceitas(req, res) {
         try {
-            await receitas.find()
-                .exec((error,receitas)=>{
+            receitas.find()
+                .exec((error, receitas) => {
                     res.status(200).json(receitas);
                 })
 
-
         } catch (error) {
-
+            res.status(500).send({ message: "Erro interno!", error: error.message });
         }
     }
+
+    static listarReceitaPorId(req, res) {
+        const id = req.params.id;
+        try {
+            receitas.findById(id)
+                .exec((error, receitas) => {
+
+                    if (!receitas || error) {
+                        res.status(404).send({ message: "Receita não encontrada" });
+                        return;
+                    }
+
+                    res.status(200).json(receitas);
+                })
+
+        } catch (error) {
+            res.status(500).send({ message: "Erro interno!", error: error.message });
+        }
+    }
+
 }
 
 export default receitaController;
