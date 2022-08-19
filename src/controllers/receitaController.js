@@ -22,6 +22,19 @@ class receitaController {
 
 
     }
+
+    static async listarTodasReceitas(req, res) {
+        try {
+            await receitas.find()
+                .exec((error,receitas)=>{
+                    res.status(200).json(receitas);
+                })
+
+
+        } catch (error) {
+
+        }
+    }
 }
 
 export default receitaController;
