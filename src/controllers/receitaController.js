@@ -55,6 +55,7 @@ class receitaController {
         }
     }
 
+
     static atualizarReceita(req, res) {
         const id = req.params.id;
         const { descricao, valor, data } = req.body;
@@ -72,6 +73,7 @@ class receitaController {
             }
         })
     }
+
 }
 
 export default receitaController;
