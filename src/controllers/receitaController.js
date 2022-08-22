@@ -118,7 +118,7 @@ class receitaController {
         const id = req.params.id;
 
         receitas.findByIdAndDelete(id, (error) => {
-
+            if (!error) {
                 res.status(200).send({ message: "Receita removido com sucesso!" });
 
             } else {
