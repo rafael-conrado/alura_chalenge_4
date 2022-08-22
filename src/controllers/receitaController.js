@@ -4,9 +4,9 @@ import validacoes from '../middleware/validations.js'
 class receitaController {
 
     static async cadastrarReceita(req, res) {
-        let receita = new receitas(req.body);
-        let mesAtual = new Date().getMonth() + 1;
-        let anoAtual = new Date().getFullYear();
+        const receita = new receitas(req.body);
+        const mesAtual = new Date().getMonth() + 1;
+        const anoAtual = new Date().getFullYear();
         const { descricao, valor, data } = req.body;
 
         if (!descricao || !valor || !data) {
