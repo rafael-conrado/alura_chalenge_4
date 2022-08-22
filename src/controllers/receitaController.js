@@ -81,7 +81,6 @@ class receitaController {
         const { descricao, valor, data } = req.body;
         const id = req.params.id;
 
-
         if (!descricao || !valor || !data) {
             res.status(422).json({ message: "Campos vazios!" });
             return;
@@ -113,16 +112,15 @@ class receitaController {
                     })
                 }
             });
-
-
     }
 
     static excluirReceita(req, res) {
         const id = req.params.id;
 
         receitas.findByIdAndDelete(id, (error) => {
-            if (!error) {
+
                 res.status(200).send({ message: "Receita removido com sucesso!" });
+
             } else {
                 res.status(500).send({ message: error.message })
             }
