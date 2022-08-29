@@ -1,19 +1,21 @@
-import receitaService from "../service/receitaService.js";
+import receitas from '../models/Receita.js';
+import * as utils from '../utils/index.js'
 
-class receitaController {
+
+
+class receitaService {
 
     static async cadastrarReceita(req, res) {
         try {
-            receitaService.cadastrarReceita(req, res)
+            utils.createResource(req, res, receitas);
         } catch (error) {
             res.status(500).send({ message: "Erro interno!", error: error.message });
         }
     }
 
-
     static listarTodasReceitas(req, res) {
         try {
-            receitaService.listarTodasReceitas(req, res)
+            utils.getAllResources(req, res, receitas);
         } catch (error) {
             res.status(500).send({ message: "Erro interno!", error: error.message });
         }
@@ -21,16 +23,15 @@ class receitaController {
 
     static listarReceitaPorId(req, res) {
         try {
-            receitaService.listarReceitaPorId(req, res)
+            utils.getResourceById(req, res, receitas);
         } catch (error) {
             res.status(500).send({ message: "Erro interno!", error: error.message });
         }
     }
 
-
     static atualizarReceita(req, res) {
         try {
-            receitaService.atualizarReceita(req, res)
+            utils.updateResource(req, res, receitas);
         } catch (error) {
             res.status(500).send({ message: "Erro interno!", error: error.message });
         }
@@ -38,11 +39,11 @@ class receitaController {
 
     static excluirReceita(req, res) {
         try {
-            receitaService.excluirReceita(req, res)
+            utils.deleteResource(req, res, receitas);
         } catch (error) {
             res.status(500).send({ message: "Erro interno!", error: error.message });
         }
     }
 }
 
-export default receitaController;
+export default receitaService

@@ -1,48 +1,48 @@
-import receitaService from "../service/receitaService.js";
+import despesas from "../models/Despesa.js";
+import * as utils from '../utils/index.js'
 
-class receitaController {
+class despesaService {
 
-    static async cadastrarReceita(req, res) {
+    static cadastrarDespesa(req, res) {
         try {
-            receitaService.cadastrarReceita(req, res)
+            utils.createResource(req, res, despesas);
         } catch (error) {
             res.status(500).send({ message: "Erro interno!", error: error.message });
         }
     }
 
-
-    static listarTodasReceitas(req, res) {
+    static listarTodasDespesas(req, res) {
         try {
-            receitaService.listarTodasReceitas(req, res)
+            utils.getAllResources(req, res, despesas);
         } catch (error) {
             res.status(500).send({ message: "Erro interno!", error: error.message });
         }
     }
 
-    static listarReceitaPorId(req, res) {
+    static listarDespesaPorId(req, res) {
         try {
-            receitaService.listarReceitaPorId(req, res)
+            utils.getResourceById(req, res, despesas);
         } catch (error) {
             res.status(500).send({ message: "Erro interno!", error: error.message });
         }
     }
 
-
-    static atualizarReceita(req, res) {
+    static atualizarDespesa(req, res) {
         try {
-            receitaService.atualizarReceita(req, res)
+            utils.updateResource(req, res, despesas);
         } catch (error) {
             res.status(500).send({ message: "Erro interno!", error: error.message });
         }
     }
 
-    static excluirReceita(req, res) {
+    static excluirDespesa(req, res) {
         try {
-            receitaService.excluirReceita(req, res)
+            utils.deleteResource(req, res, despesas);
         } catch (error) {
             res.status(500).send({ message: "Erro interno!", error: error.message });
         }
     }
+
 }
 
-export default receitaController;
+export default despesaService
