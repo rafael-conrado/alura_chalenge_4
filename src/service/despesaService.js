@@ -1,11 +1,11 @@
 import despesas from "../models/Despesa.js";
-import * as utils from '../utils/index.js'
+import * as helpers from '../helpers/index.js'
 
 class despesaService {
 
     static cadastrarDespesa(req, res) {
         try {
-            utils.createResource(req, res, despesas);
+            helpers.createResource(req, res, despesas);
         } catch (error) {
             res.status(500).send({ message: "Erro interno!", error: error.message });
         }
@@ -13,7 +13,7 @@ class despesaService {
 
     static listarTodasDespesas(req, res) {
         try {
-            utils.getAllResources(req, res, despesas);
+            helpers.getAllResources(req, res, despesas);
         } catch (error) {
             res.status(500).send({ message: "Erro interno!", error: error.message });
         }
@@ -21,7 +21,7 @@ class despesaService {
 
     static listarDespesaPorId(req, res) {
         try {
-            utils.getResourceById(req, res, despesas);
+            helpers.getResourceById(req, res, despesas);
         } catch (error) {
             res.status(500).send({ message: "Erro interno!", error: error.message });
         }
@@ -29,7 +29,7 @@ class despesaService {
 
     static atualizarDespesa(req, res) {
         try {
-            utils.updateResource(req, res, despesas);
+            helpers.updateResource(req, res, despesas);
         } catch (error) {
             res.status(500).send({ message: "Erro interno!", error: error.message });
         }
@@ -37,7 +37,7 @@ class despesaService {
 
     static excluirDespesa(req, res) {
         try {
-            utils.deleteResource(req, res, despesas);
+            helpers.deleteResource(req, res, despesas);
         } catch (error) {
             res.status(500).send({ message: "Erro interno!", error: error.message });
         }

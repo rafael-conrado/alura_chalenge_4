@@ -1,5 +1,5 @@
 import receitas from '../models/Receita.js';
-import * as utils from '../utils/index.js'
+import * as helpers from '../helpers/index.js'
 
 
 
@@ -7,7 +7,7 @@ class receitaService {
 
     static async cadastrarReceita(req, res) {
         try {
-            utils.createResource(req, res, receitas);
+            helpers.createResource(req, res, receitas);
         } catch (error) {
             res.status(500).send({ message: "Erro interno!", error: error.message });
         }
@@ -15,7 +15,7 @@ class receitaService {
 
     static listarTodasReceitas(req, res) {
         try {
-            utils.getAllResources(req, res, receitas);
+            helpers.getAllResources(req, res, receitas);
         } catch (error) {
             res.status(500).send({ message: "Erro interno!", error: error.message });
         }
@@ -23,7 +23,7 @@ class receitaService {
 
     static listarReceitaPorId(req, res) {
         try {
-            utils.getResourceById(req, res, receitas);
+            helpers.getResourceById(req, res, receitas);
         } catch (error) {
             res.status(500).send({ message: "Erro interno!", error: error.message });
         }
@@ -31,7 +31,7 @@ class receitaService {
 
     static atualizarReceita(req, res) {
         try {
-            utils.updateResource(req, res, receitas);
+            helpers.updateResource(req, res, receitas);
         } catch (error) {
             res.status(500).send({ message: "Erro interno!", error: error.message });
         }
@@ -39,7 +39,7 @@ class receitaService {
 
     static excluirReceita(req, res) {
         try {
-            utils.deleteResource(req, res, receitas);
+            helpers.deleteResource(req, res, receitas);
         } catch (error) {
             res.status(500).send({ message: "Erro interno!", error: error.message });
         }
